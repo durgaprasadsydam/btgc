@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1200" width="900" height="1200" role="img" aria-label="Dubai Professional & Commercial Licences — certificate preview">
+<defs>
+<linearGradient id="g" gradientTransform="rotate(45)"><stop offset="0" stop-color="#061738"/><stop offset="1" stop-color="#0B2E6F"/></linearGradient>
+<pattern id="p" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#fff" stroke-opacity=".07" stroke-width="1"/></pattern>
+</defs>
+<rect width="900" height="1200" fill="url(#g)"/><rect width="900" height="1200" fill="url(#p)"/>
+<g><rect x="108" y="96" width="684" height="1008" stroke="#fff" stroke-opacity="0.5" stroke-width="3" fill="#fff" fill-opacity="0.05"/><rect x="162" y="168.00000000000003" width="576" height="96" stroke="#fff" stroke-opacity="0.35" stroke-width="2" fill="none" /><path d="M180 360L720 360" stroke="#fff" stroke-opacity="0.2" stroke-width="3" fill="none"/><path d="M180 420L648.0000000000001 420" stroke="#fff" stroke-opacity="0.2" stroke-width="3" fill="none"/><path d="M180 480L576 480" stroke="#fff" stroke-opacity="0.2" stroke-width="3" fill="none"/><path d="M180 540L720 540" stroke="#fff" stroke-opacity="0.2" stroke-width="3" fill="none"/><path d="M180 600L648.0000000000001 600" stroke="#fff" stroke-opacity="0.2" stroke-width="3" fill="none"/><path d="M180 660L576 660" stroke="#fff" stroke-opacity="0.2" stroke-width="3" fill="none"/><path d="M180 720.0000000000001L720 720.0000000000001" stroke="#fff" stroke-opacity="0.2" stroke-width="3" fill="none"/><path d="M180 780L648.0000000000001 780" stroke="#fff" stroke-opacity="0.2" stroke-width="3" fill="none"/><path d="M180 840L576 840" stroke="#fff" stroke-opacity="0.2" stroke-width="3" fill="none"/><circle cx="630" cy="960" r="72" stroke="#fff" stroke-opacity="0.4" stroke-width="3" fill="none"/><circle cx="630" cy="960" r="45" stroke="#fff" stroke-opacity="0.25" stroke-width="2" fill="none"/></g>
+<path d="M702 1200 L810 0 h16.2 L718.2 1200z" fill="#E2231A" fill-opacity=".85"/>
+<path d="M738 1200 L846 0 h7.2 L745.1999999999999 1200z" fill="#fff" fill-opacity=".5"/>
+<text x="28" y="1170" font-family="Inter,Arial,sans-serif" font-size="24" font-weight="600" fill="#fff" fill-opacity=".85">Dubai Professional &amp; Commercial Licences — certificate preview</text>
+<text x="28" y="1138" font-family="Inter,Arial,sans-serif" font-size="16" letter-spacing="3" fill="#fff" fill-opacity=".5">PLACEHOLDER — REPLACE WITH REAL PHOTO</text>
+</svg>

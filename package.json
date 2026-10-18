@@ -1,0 +1,19 @@
+{
+  "name": "btgc-website",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "pages": "node tools/build-pages.mjs",
+    "hero-images": "node tools/make-hero-images.mjs",
+    "css": "npx @tailwindcss/cli -i ./src/input.css -o ./dist/output.css --minify",
+    "css:watch": "npx @tailwindcss/cli -i ./src/input.css -o ./dist/output.css --watch",
+    "build": "node tools/build-pages.mjs && npx @tailwindcss/cli -i ./src/input.css -o ./dist/output.css --minify",
+    "serve": "npx serve . -l 4173"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.0",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.1.0"
+  }
+}
