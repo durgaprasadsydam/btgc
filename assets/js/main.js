@@ -132,10 +132,15 @@
         bars.forEach((b, k) => gsap.set(b, { scaleX: k < to ? 1 : 0 }));
         gsap.set(inS, { zIndex: 2 }); gsap.set(outS, { zIndex: 1 });
         inS.classList.add("is-active");
-        const tl = gsap.timeline({ onComplete: () => { outS.classList.remove("is-active"); gsap.set(outS, { opacity: 0, zIndex: 0 }); done(); } });
-        tl.fromTo(inS, { opacity: 0, clipPath: dir > 0 ? "inset(0 0 0 100%)" : "inset(0 100% 0 0)" }, { opacity: 1, clipPath: "inset(0 0% 0 0%)", duration: 1.4, ease: "expo.inOut" }, 0)
-          .fromTo($("img", inS), { scale: 1.18 }, { scale: 1, duration: 7.5, ease: "power2.out" }, 0)
-          .to($("img", outS), { scale: 1.06, duration: 1.4, ease: "expo.inOut" }, 0);
+        // Slow zoom runs on its own so it never blocks the buttons
+        gsap.killTweensOf($("img", inS));
+        gsap.fromTo($("img", inS), { scale: 1.18 }, { scale: 1, duration: 7.5, ease: "power2.out" });
+        const tl = gsap.timeline({ onComplete: () => {
+          if (slider && slider.index !== from) { outS.classList.remove("is-active"); gsap.set(outS, { opacity: 0, zIndex: 0 }); }
+        } });
+        tl.fromTo(inS, { opacity: 0, clipPath: dir > 0 ? "inset(0 0 0 100%)" : "inset(0 100% 0 0)" }, { opacity: 1, clipPath: "inset(0 0% 0 0%)", duration: 1.2, ease: "expo.inOut" }, 0)
+          .to($("img", outS), { scale: 1.06, duration: 1.2, ease: "expo.inOut" }, 0)
+          .call(done, null, 0.9);
         // text swap
         const tOut = texts[from], tIn = texts[to];
         tl.to(tOut.children, { y: -30, autoAlpha: 0, duration: 0.6, stagger: 0.05, ease: "power3.in" }, 0)
@@ -143,6 +148,7 @@
           .set(tIn, { autoAlpha: 1, visibility: "visible" }, 0.65)
           .fromTo($("[data-slide-script]", tIn), { y: 40, autoAlpha: 0, clipPath: "inset(-20% 120% -20% -20%)" }, { y: 0, autoAlpha: 1, clipPath: "inset(-20% -20% -20% -20%)", duration: 1.3, ease: "expo.out", clearProps: "clipPath" }, 0.7)
           .fromTo($("[data-slide-line]", tIn), { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1.1, ease: "expo.out" }, 0.85);
+        texts.forEach((t, k) => { if (k !== to && k !== from) { gsap.set(t, { autoAlpha: 0 }); } });
       },
     });
     dots.forEach((d, i) => d.addEventListener("click", () => slider.go(i, i > slider.index ? 1 : -1)));
@@ -157,7 +163,7 @@
     if (!root) return;
     const slides = $$("[data-banner-slide]", root);
     const counter = $("[data-banner-index]", root);
-    makeSlider({
+    const bslider = makeSlider({
       slides, interval: 0,
       next: $("[data-banner-next]", root), prev: $("[data-banner-prev]", root),
       onChange: (from, to, dir, done) => {
@@ -166,7 +172,8 @@
         inS.classList.add("is-active");
         gsap.set(inS, { zIndex: 2 }); gsap.set(outS, { zIndex: 1 });
         const panel = $(".diag-panel-r > div:last-child", inS);
-        gsap.timeline({ onComplete: () => { outS.classList.remove("is-active"); gsap.set(outS, { opacity: 0, zIndex: 0 }); done(); } })
+        gsap.timeline({ onComplete: () => { if (bslider.index !== from) { outS.classList.remove("is-active"); gsap.set(outS, { opacity: 0, zIndex: 0 }); } } })
+          .call(done, null, 0.6)
           .fromTo(inS, { opacity: 0 }, { opacity: 1, duration: 0.8, ease: "power2.out" }, 0)
           .fromTo($("img", inS), { scale: 1.1, xPercent: dir * 4 }, { scale: 1, xPercent: 0, duration: 1.4, ease: "expo.out" }, 0)
           .fromTo(panel.children, { y: 30, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 1, stagger: 0.06, ease: "expo.out" }, 0.15);

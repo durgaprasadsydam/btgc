@@ -51,6 +51,9 @@
   h1, h2, h3, h4 { @apply font-display; letter-spacing: -0.03em; }
   img { @apply select-none; }
   :focus-visible { @apply outline-2 outline-offset-4 outline-signal; }
+  /* Tailwind v4 resets buttons to the default cursor — restore the hand pointer */
+  button:not(:disabled), [role="button"], label[for], select, summary, [data-lightbox] { cursor: pointer; }
+  button:disabled { cursor: not-allowed; }
 }
 
 /* ============ Components ============ */
