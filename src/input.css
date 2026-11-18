@@ -119,6 +119,10 @@
   .site-header.is-solid .logo-plate { @apply shadow-none; }
   .site-header .hdr-cta { @apply bg-white text-ink; }
   .site-header.is-solid .hdr-cta { @apply bg-ink text-white; }
+  .site-header .hdr-cta::after { @apply bg-signal; }
+  .site-header.is-solid .hdr-cta::after { @apply bg-signal; }
+  .site-header .hdr-cta { transition: color .4s; }
+  .site-header .hdr-cta:hover { @apply text-white; }
 
   .nav-link { @apply relative py-2 text-[0.92rem] font-medium; }
   .nav-link::after {
